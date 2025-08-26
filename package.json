@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "express": "latest",
+    "he": "latest",
+    "jszip": "^3.10.1",
+    "socket.io": "^2.5.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "node server.js"
+  }
+}
