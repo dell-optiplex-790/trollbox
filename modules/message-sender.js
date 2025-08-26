@@ -2,6 +2,8 @@ var encoder = require('./encoder');
 var logger = require('./logger');
 
 module.exports = function sendMessage(socket, message, user, isSystem) {
+    if(message == '') {return;} // fix: blank messsages can no longer be sent
+    
     socket.emit('message', {
         msg: isSystem ? message : encoder.encode(message),
         ...user,
