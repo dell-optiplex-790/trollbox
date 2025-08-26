@@ -6,12 +6,12 @@ var serverCfg = configManager.read('server');
 
 module.exports = function parseCmd(socket, io, users, data, leaderboard) {
     if(data.startsWith('/r ')) {
-        gotoRoom(socket, io, users, data.slice(3))
+        gotoRoom(socket, io, users, data.slice(3), leaderboard)
         return false;
     }
     
     if(data.startsWith('/room ')) {
-        gotoRoom(socket, io, users, data.slice(6))
+        gotoRoom(socket, io, users, data.slice(6), leaderboard)
         return false;
     }
     

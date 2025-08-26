@@ -3,10 +3,11 @@ var fs = require('fs');
 var logger = require('./logger')
 var configManager = require('./config-manager');
 var mimes = configManager.read('mimes');
+var serverCfg = configManager.read('server');
 var archive = new jsZip();
 var path = require('path');
 
-archive.loadAsync(fs.readFileSync('client.zip', 'binary')).then(e => {
+archive.loadAsync(fs.readFileSync('clients/' + serverCfg.client + '.zip', 'binary')).then(e => {
     logger.log('Client loaded!');
 });
 

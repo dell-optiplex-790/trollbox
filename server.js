@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
 		}
 		if(!users[socket.id]) {
 			home = hash(socket.handshake.address);
-			users[socket.id] = {nick: encoder.encode(pseudo), color, home}
+			users[socket.id] = {nick: encoder.encode(pseudo), color, home, room: 'atrium'}
 			logger.log(`-> ${users[socket.id].nick} has entered teh trollbox`)
 			io.to('atrium').emit('user joined', users[socket.id])
 			if(!leaderboard.includes(socket.id)) {
@@ -135,8 +135,8 @@ io.on('connection', (socket) => {
 			}
 			sendMessage(
 				socket,
-				'Welcome',
-				{nick: '~', color: '#fff', home: 'nodejs'},
+				serverCfg.welcomeMsg,
+				serverCfg.serverUser,
 				true
 			)
 		} else {
